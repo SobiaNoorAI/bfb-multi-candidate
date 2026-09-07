@@ -56,7 +56,8 @@ cd bfb-candidate-generator
 # No dependencies needed! Just Python 3.8+
 python bfb_generator.py
 ```
-Quick Start
+## Quick Start
+```bash
 from bfb_generator import BFBCandidateGenerator
 
 # Define your pattern
@@ -69,3 +70,52 @@ results = generator.run(max_cycles=3)
 
 # View top candidates
 generator.print_summary(top_n=5)
+```
+## Usage Examples
+Example 1: Basic Pattern
+```bash
+# Simple pattern with multiple possible sequences
+copy_numbers = [2, 4, 6, 4, 2]
+foldbacks = [False, True, False, True, False]
+
+generator = BFBCandidateGenerator(copy_numbers, foldbacks)
+generator.run(max_cycles=3)
+generator.print_summary(top_n=5)
+```
+Example 2: Complex Pattern
+```bash
+# More complex pattern
+copy_numbers = [1, 2, 4, 8, 4, 2, 1]
+foldbacks = [False, False, True, False, True, False, False]
+
+generator = BFBCandidateGenerator(copy_numbers, foldbacks)
+results = generator.run(max_cycles=4)
+generator.print_summary(top_n=5)
+
+# Export results to file
+generator.export_sequences("bfb_candidates.txt")
+```
+Example 3: Find All Perfect Matches
+```bash
+# Find all sequences with 100% match
+copy_numbers = [2, 4, 6, 4, 2]
+foldbacks = [False, True, False, True, False]
+
+generator = BFBCandidateGenerator(copy_numbers, foldbacks)
+results = generator.run(max_cycles=4)
+
+perfect_matches = [c for c in results if c['score'] >= 0.99]
+print(f"Found {len(perfect_matches)} perfect matches:")
+for match in perfect_matches:
+    print(f"  {' -> '.join(match['sequence'])}")
+```
+
+🔬 How It Works
+BFB Cycle Types
+The simulator models three basic BFB cycle types:
+
+|Cycle	| Transformation |	Example|
+|-------|----------------|---------|
+|**A**	| Simple duplication |	[1,2] → [1,2,1,2]|
+|**B**	| Duplication with break	| [1,2,3,4] → [1,2,3,4,3,4]|
+|**C**	|Reverse duplication |	[1,2,3] → [1,2,3,3,2,1]|
