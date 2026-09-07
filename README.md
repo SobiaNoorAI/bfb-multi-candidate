@@ -192,15 +192,14 @@ TOP 5 CANDIDATES
 ## File Structure
 ```bash
 bfb-candidate-generator/
-├── README.md                 # This file
-├── bfb_generator.py          # Main Python code
-├── requirements.txt          # Dependencies (none needed!)
-├── examples/                 # Example notebooks
-│   ├── demo_basic.ipynb     # Basic usage
-│   ├── demo_complex.ipynb   # Complex patterns
-│   └── demo_interactive.ipynb # Interactive exploration
-└── outputs/                  # Generated outputs
-    └── bfb_candidates.txt    # Exported results
+├── venv/                          # Virtual environment (keep)
+├── README.md                      # This file
+├── bfb_generator.ipynb            # Main notebook (keep)
+├── requirements.txt               # Requirements (keep)
+├── bfb_generator.py               # Python script version (optional)
+└── outputs/                       # NEW: Move output files here
+    ├── bfb_candidates_demo.txt
+    └── bfb_candidates_export.txt
 ```
 ## Technical Details
 ### Requirements
