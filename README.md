@@ -146,3 +146,57 @@ Rank by Score (Highest First)
     ↓
 Output: Ranked Candidates
 ```
+## Example Output 
+
+```bash
+
+BFB CANDIDATE GENERATOR
+
+Input Pattern: [2, 4, 6, 4, 2]
+Foldbacks: [False, True, False, True, False]
+Searching up to 3 cycles...
+
+Generated 39 possible sequences to evaluate
+
+TOP 5 CANDIDATES
+
+
+1. Sequence: A -> B -> C
+   Match: 100.0% (5/5 positions)
+   Predicted: [2, 4, 6, 4, 2]
+   Average Difference: 0.00
+
+2. Sequence: A -> C -> B
+   Match: 100.0% (5/5 positions)
+   Predicted: [2, 4, 6, 4, 2]
+   Average Difference: 0.00
+
+3. Sequence: B -> A -> C
+   Match: 100.0% (5/5 positions)
+   Predicted: [2, 4, 6, 4, 2]
+   Average Difference: 0.00
+
+4. Sequence: B -> C -> A
+   Match: 80.0% (4/5 positions)
+   Predicted: [2, 4, 6, 3, 5]
+   Average Difference: 0.60
+
+5. Sequence: C -> A -> B
+   Match: 80.0% (4/5 positions)
+   Predicted: [2, 4, 6, 5, 3]
+   Average Difference: 0.60
+```
+
+## File Structure
+```bash
+bfb-candidate-generator/
+├── README.md                 # This file
+├── bfb_generator.py          # Main Python code
+├── requirements.txt          # Dependencies (none needed!)
+├── examples/                 # Example notebooks
+│   ├── demo_basic.ipynb     # Basic usage
+│   ├── demo_complex.ipynb   # Complex patterns
+│   └── demo_interactive.ipynb # Interactive exploration
+└── outputs/                  # Generated outputs
+    └── bfb_candidates.txt    # Exported results
+```
