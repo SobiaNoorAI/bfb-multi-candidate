@@ -119,3 +119,30 @@ The simulator models three basic BFB cycle types:
 |**A**	| Simple duplication |	[1,2] → [1,2,1,2]|
 |**B**	| Duplication with break	| [1,2,3,4] → [1,2,3,4,3,4]|
 |**C**	|Reverse duplication |	[1,2,3] → [1,2,3,3,2,1]|
+
+## Scoring Algorithm
+1. Generate all possible sequences up to N cycles
+
+2. Simulate what each sequence would produce
+
+3. Compare predicted vs observed copy numbers
+
+4. Score = (matches) / (total positions compared)
+
+5. Rank candidates by score (highest first)
+
+## Visual Pipeline
+
+```bash
+Input Pattern
+    ↓
+Generate All Sequences
+    ↓
+Simulate Each Sequence
+    ↓
+Score vs. Observed Pattern
+    ↓
+Rank by Score (Highest First)
+    ↓
+Output: Ranked Candidates
+```
