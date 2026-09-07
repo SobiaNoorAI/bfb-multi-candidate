@@ -8,12 +8,13 @@ A Python prototype for generating multiple BFB (Breakage-Fusion-Bridge) sequence
 
 ## 📖 Background
 
-The **BFBArchitect** tool uses an Integer Linear Program (ILP) to find a single consensus BFB sequence that best fits observed genomic data. However, biological data is inherently ambiguous—**multiple sequences can produce the exact same copy number pattern**.
+The **BFBArchitect** tool uses an Integer Linear Program (ILP) to find a single consensus BFB sequence that best fits observed genomic data. However, biological data is inherently ambiguous, **multiple sequences can produce the exact same copy number pattern**.
 
 This project explores generating **ALL possible BFB sequences** and ranking them by likelihood, providing geneticists with a confidence distribution rather than a single deterministic guess.
 
 ### The Problem
 Input Pattern: [2, 4, 6, 4, 2]
+
 Foldbacks: [False, True, False, True, False]
 
 Possible BFB sequences that explain this pattern:
@@ -110,8 +111,9 @@ for match in perfect_matches:
     print(f"  {' -> '.join(match['sequence'])}")
 ```
 
-🔬 How It Works
-BFB Cycle Types
+## How It Works
+
+### BFB Cycle Types
 The simulator models three basic BFB cycle types:
 
 |Cycle	| Transformation |	Example|
@@ -200,3 +202,54 @@ bfb-candidate-generator/
 └── outputs/                  # Generated outputs
     └── bfb_candidates.txt    # Exported results
 ```
+## Technical Details
+### Requirements
+Python 3.8+
+
+No external dependencies (uses only standard library)
+
+### API Reference
+
+` BFBCandidateGenerator(copy_numbers, foldbacks) `
+
+Initialize the generator with observed data.
+
+Parameters:
+
+* `copy_numbers` (List[int]): Copy number array
+
+* `foldbacks` (List[bool]): Foldback positions
+
+## Methods:
+
+|Method | Description|
+|-------| -----------| 
+|run(max_cycles=4)	|Generate and rank all candidates|
+|print_summary(top_n=10)	|Print top N candidates|
+|export_sequences(filename)	|Export to text file|
+|get_best_sequences(threshold=0.8)	|Get candidates above threshold|
+|simulate_bfb(sequence)	|Simulate a BFB sequence|
+
+## Contributing
+Contributions are welcome! Here's how to contribute:
+
+1. Fork the repository
+
+2. Create a feature branch
+
+3. Make your changes
+
+4. Submit a pull request
+
+
+## 📄 License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+👩‍💻 Author :
+Sobia Noor
+
+GitHub: [SobiaNoorAI/](https://github.com/SobiaNoorAI)
+
+LinkedIn: [SobiaNoorAI](https://www.linkedin.com/in/sobianoorai/)
+
+Email: sobianoor087@gmail.com
